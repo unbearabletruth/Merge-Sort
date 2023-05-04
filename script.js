@@ -1,9 +1,18 @@
 function mergeSort(array){
-    //1) base case to quit recursive loop
-    //2) recursively sort left side of array
-    //3) recursively sort right side of array
-    //4) merge them together
-    //5) recursive tree is simular to the Fibonacci recursive tree
+    if (array.length < 2) return array[0];
+    const half = Math.ceil(array.length / 2);
+    const left = array.slice(0, half); 
+    const right = array.slice(half);
+    mergeSort(left);
+    mergeSort(right);
+    //if (Number(left) < Number(right)) return left.concat(right);
+    //else return right.concat(left);
+    for (let i = 0; i < array.length; i++) {
+        if (left[i] > right[i]) return [right[i]].concat(left[i]);
+        else if (left[i] < right[i]) return [left[i]].concat(right[i]); 
+    }
 }
 
 console.log(mergeSort([3,9,22,1,7,44,2,11]))
+
+
