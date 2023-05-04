@@ -17,7 +17,9 @@ function merge(left, right){
             sortedArray.push(right.shift());
         }
     }
-    return [...sortedArray, ...left, ...right];
+    return sortedArray
+                    .concat(left)
+                    .concat(right);
 }
 
 console.log(mergeSort([3,9,22,1,7,44,2,11]));
