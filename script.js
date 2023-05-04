@@ -5,15 +5,19 @@ function mergeSort(array){
     const right = array.slice(half);
     const mergeLeft = mergeSort(left);
     const mergeRight = mergeSort(right);
+    return merge(mergeLeft, mergeRight)  
+}
+
+function merge(left, right){
     let sortedArray = [];
-    while (mergeLeft.length && mergeRight.length) {
-        if (mergeLeft[0] < mergeRight[0]) {
-            sortedArray.push(mergeLeft.shift());
+    while (left.length && right.length) {
+        if (left[0] < right[0]) {
+            sortedArray.push(left.shift());
         } else {
-            sortedArray.push(mergeRight.shift());
+            sortedArray.push(right.shift());
         }
     }
-    return [...sortedArray, ...mergeLeft, ...mergeRight]
+    return [...sortedArray, ...left, ...right];
 }
 
 console.log(mergeSort([3,9,22,1,7,44,2,11]));
